@@ -1,6 +1,7 @@
 import ProductCard from "./ProductCard"
 
-function ProductList() {
+
+function ProductList({ onProductClick }) {
 
   const products = [
     {
@@ -45,17 +46,22 @@ function ProductList() {
     }
   ]
 
+
   return (
     <section className="product-list">
 
       <div className="product-list-header">
 
         <div>
-          <h2>ĐIỆN THOẠI NỔI BẬT</h2>
+
+          <h2>
+            ĐIỆN THOẠI NỔI BẬT
+          </h2>
 
           <p>
             Khám phá những sản phẩm được yêu thích nhất
           </p>
+
         </div>
 
         <button className="view-all">
@@ -64,13 +70,17 @@ function ProductList() {
 
       </div>
 
+
       <div className="products-grid">
 
         {products.map((product, index) => (
+
           <ProductCard
             key={index}
             product={product}
+            onClick={() => onProductClick(product)}
           />
+
         ))}
 
       </div>
@@ -78,5 +88,6 @@ function ProductList() {
     </section>
   )
 }
+
 
 export default ProductList
