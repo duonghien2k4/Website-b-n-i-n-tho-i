@@ -19,119 +19,344 @@ body {
    HEADER
 ========================= */
 
+/* =========================
+   HEADER
+========================= */
+
 .header {
   width: 100%;
-  height: 68px;
-  background:
-    linear-gradient(
-      135deg,
-      #1683FF,
-      #4f35b8
-    );
+  height: 76px;
+  background: linear-gradient(
+    135deg,
+    #1683ff 0%,
+    #4f35b8 100%
+  );
   color: white;
+  box-shadow: 0 3px 16px rgba(35, 63, 130, 0.18);
+  position: relative;
+  z-index: 100;
 }
 
 .header-container {
-  width: min(1200px, calc(100% - 32px));
+  width: calc(100% - 80px);
+  max-width: 1200px;
   height: 100%;
   margin: 0 auto;
 
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
 }
 
-/* Logo */
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  white-space: nowrap;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+
+  cursor: pointer;
+  user-select: none;
 }
 
-.logo span {
+.logo-main {
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: white;
+}
+
+.logo-sub {
+  font-size: 19px;
+  line-height: 1;
   font-weight: 500;
+  letter-spacing: -0.5px;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* Search */
+
+/* =========================
+   SEARCH
+========================= */
 
 .search-box {
   flex: 1;
   max-width: 580px;
-  height: 40px;
+  height: 44px;
 
   display: flex;
+  align-items: center;
 
   background: white;
-  border-radius: 8px;
-
+  border-radius: 10px;
   overflow: hidden;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.12);
+
+  transition: 0.2s ease;
+}
+
+.search-box:focus-within {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.22),
+    0 5px 18px rgba(0, 0, 0, 0.16);
 }
 
 .search-box input {
   flex: 1;
 
+  width: 100%;
+  height: 100%;
+
+  padding: 0 17px;
+
   border: none;
   outline: none;
 
-  padding: 0 15px;
-
-  color: #333;
+  font-family: inherit;
   font-size: 13px;
+
+  color: #1e293b;
+  background: transparent;
 }
 
 .search-box input::placeholder {
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
-.search-box button {
-  width: 45px;
+.search-button {
+  width: 50px;
+  height: 100%;
 
   border: none;
+  border-left: 1px solid #edf2f7;
 
   background: white;
+  color: #1683ff;
 
-  color: #4b82e8;
-
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
-/* Header actions */
+.search-button:hover {
+  background: #f1f7ff;
+  color: #4f35b8;
+}
+
+
+/* =========================
+   HEADER ACTIONS
+========================= */
 
 .header-actions {
   margin-left: auto;
 
   display: flex;
   align-items: center;
+  gap: 3px;
 
-  gap: 18px;
+  flex-shrink: 0;
 }
 
 .header-action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  position: relative;
+
+  min-width: 108px;
+  height: 52px;
+
+  padding: 6px 10px;
 
   border: none;
-  background: transparent;
+  border-radius: 9px;
 
+  background: transparent;
   color: white;
 
-  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 
   cursor: pointer;
 
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.header-action:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.header-action:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   ACTION ICON
+========================= */
+
+.action-icon {
+  position: relative;
+
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+}
+
+.action-icon svg {
+  display: block;
+}
+
+
+/* =========================
+   ACTION TEXT
+========================= */
+
+.action-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 3px;
   white-space: nowrap;
 }
 
-.action-icon {
-  font-size: 18px;
+.action-text span {
+  font-size: 9px;
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.action-text strong {
+  font-size: 12px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  color: white;
+}
+
+
+/* =========================
+   CART BADGE
+========================= */
+
+.cart-badge {
+  position: absolute;
+
+  top: -4px;
+  right: -6px;
+
+  min-width: 16px;
+  height: 16px;
+
+  padding: 0 4px;
+
+  border-radius: 20px;
+
+  background: #ef4444;
+  color: white;
+
+  border: 2px solid #3d55bc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+
+  .header-container {
+    width: calc(100% - 40px);
+    gap: 20px;
+  }
+
+  .header-action {
+    min-width: 48px;
+    width: 48px;
+    padding: 5px;
+  }
+
+  .action-text {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .header {
+    height: 64px;
+  }
+
+  .header-container {
+    width: calc(100% - 20px);
+    gap: 12px;
+  }
+
+  .logo-sub {
+    display: none;
+  }
+
+  .logo-main {
+    font-size: 24px;
+  }
+
+  .search-box {
+    height: 38px;
+  }
+
+  .search-box input {
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .search-button {
+    width: 42px;
+  }
+
+  .header-action {
+    width: 40px;
+    min-width: 40px;
+    height: 44px;
+  }
 }
 
 
@@ -139,54 +364,197 @@ body {
    NAVBAR
 ========================= */
 
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
   width: 100%;
-  height: 44px;
+  height: 48px;
 
-  background: white;
+  background: #ffffff;
 
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e8edf3;
+
+  position: relative;
+  z-index: 90;
 }
 
 .navbar-container {
-  width: min(1200px, calc(100% - 32px));
+  width: calc(100% - 80px);
+  max-width: 1200px;
   height: 100%;
 
   margin: 0 auto;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  gap: 4px;
 }
 
-.navbar a {
+
+/* =========================
+   NAV ITEM
+========================= */
+
+.nav-item {
+  position: relative;
+
   height: 100%;
+  padding: 0 14px;
 
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 5px;
 
-  padding: 0 10px;
-
-  color: #374151;
+  color: #475569;
 
   text-decoration: none;
 
   font-size: 12px;
   font-weight: 500;
 
-  border-bottom: 2px solid transparent;
+  white-space: nowrap;
 
-  transition: 0.2s;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
-.navbar a span {
-  font-size: 15px;
+
+/* Hover */
+
+.nav-item:hover {
+  color: #1683ff;
 }
 
-.navbar a:hover {
-  color: #1683FF;
-  border-bottom-color: #1683FF;
+
+/* Active */
+
+.nav-item.active {
+  color: #1683ff;
+  font-weight: 700;
+}
+
+
+/* Thanh active phía dưới */
+
+.nav-item.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+
+  height: 3px;
+
+  border-radius: 3px 3px 0 0;
+
+  background: #1683ff;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.nav-arrow {
+  margin-top: -3px;
+
+  font-size: 14px;
+  line-height: 1;
+
+  color: #94a3b8;
+
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover .nav-arrow {
+  color: #1683ff;
+  transform: translateY(1px);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.navbar-divider {
+  width: 1px;
+  height: 20px;
+
+  margin: 0 5px;
+
+  background: #e2e8f0;
+}
+
+
+/* =========================
+   SUPPORT
+========================= */
+
+.nav-support {
+  margin-left: auto;
+
+  color: #64748b;
+
+  font-weight: 500;
+}
+
+.support-icon {
+  font-size: 16px;
+  line-height: 1;
+
+  color: #1683ff;
+}
+
+.nav-support:hover {
+  color: #1683ff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+
+  .navbar-container {
+    width: calc(100% - 40px);
+    gap: 0;
+  }
+
+  .nav-item {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .nav-item.active::after {
+    left: 10px;
+    right: 10px;
+  }
+}
+
+
+@media (max-width: 800px) {
+
+  .navbar {
+    overflow-x: auto;
+  }
+
+  .navbar-container {
+    width: max-content;
+    min-width: 100%;
+    padding: 0 10px;
+  }
+
+  .nav-support {
+    margin-left: 0;
+  }
 }
 
 
@@ -2215,6 +2583,1781 @@ body {
 
   .detail-actions {
     grid-template-columns: 1fr;
+  }
+
+}
+/* ================================
+   HOT TREND
+================================ */
+
+.hot-trend {
+  width: 100%;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.hot-trend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hot-trend-header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hot-icon {
+  font-size: 28px;
+}
+
+.hot-trend-header h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1683ff;
+}
+
+.hot-trend-header button {
+  border: none;
+  background: transparent;
+  color: #1683ff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* TABS */
+
+.hot-trend-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.hot-trend-tabs button {
+  padding: 10px 22px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hot-trend-tabs button:hover {
+  border-color: #1683ff;
+  color: #1683ff;
+}
+
+.hot-trend-tabs button.active {
+  background: #1683ff;
+  border-color: #1683ff;
+  color: white;
+}
+
+/* PRODUCT GRID */
+
+.hot-trend-products {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* CARD */
+
+.trend-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.trend-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* IMAGE */
+
+.trend-image {
+  height: 235px;
+  background: #f8fafc;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.trend-discount {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: #dc2626;
+  color: white;
+
+  padding: 6px 12px;
+
+  border-radius: 0 8px 8px 0;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trend-installment {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background: #e0edff;
+  color: #1683ff;
+
+  padding: 6px 10px;
+
+  border-radius: 0 0 0 8px;
+
+  font-size: 12px;
+}
+
+/* CONTENT */
+
+.trend-content {
+  padding: 14px;
+}
+
+.trend-brand {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trend-content h3 {
+  margin: 6px 0;
+
+  font-size: 15px;
+  line-height: 1.4;
+
+  height: 42px;
+
+  overflow: hidden;
+}
+
+/* RATING */
+
+.trend-rating {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  margin: 8px 0;
+}
+
+.trend-rating span {
+  color: #f5b800;
+  font-size: 14px;
+}
+
+.trend-rating small {
+  color: #64748b;
+}
+
+/* PRICE */
+
+.trend-price {
+  color: #d00;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.trend-old-price {
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+/* PROMOTION */
+
+.trend-promotion {
+  margin-top: 10px;
+  padding: 7px;
+
+  background: #eef4ff;
+  border-radius: 6px;
+
+  color: #475569;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* BOTTOM */
+
+.trend-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 12px;
+
+  color: #64748b;
+  font-size: 12px;
+}
+
+.trend-bottom button {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #1683ff;
+  border-radius: 50%;
+
+  background: white;
+
+  color: #1683ff;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+.trend-bottom button:hover {
+  background: #1683ff;
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .hot-trend-products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .hot-trend-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hot-trend-tabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}
+/* =====================================================
+   HÀNG MỚI VỀ
+===================================================== */
+
+.new-products {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 30px auto 40px;
+  padding: 0 20px 20px;
+
+  box-sizing: border-box;
+
+  background: #f4f8ff;
+
+  border: 3px solid #6c96ff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.new-products-header {
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 -20px 20px;
+  padding: 0 30px;
+
+  background: #ffffff;
+
+  border-bottom: 2px solid #6c96ff;
+
+  box-sizing: border-box;
+}
+
+
+.new-products-title {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.new-products-icon {
+  font-size: 28px;
+}
+
+
+.new-products-title h2 {
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  color: #4f35b8;
+}
+
+
+.new-products-title p {
+  display: none;
+}
+
+
+.new-view-all {
+  border: none;
+
+  background: transparent;
+
+  color: #1683ff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   TABS
+===================================================== */
+
+.new-products-tabs {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+
+.new-products-tabs button {
+  min-width: 100px;
+
+  height: 40px;
+
+  padding: 0 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.new-products-tabs button:hover {
+  border-color: #1683ff;
+
+  color: #1683ff;
+}
+
+
+.new-products-tabs button.active {
+  background: #1683ff;
+
+  border-color: #1683ff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.new-products-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.new-product-card {
+  position: relative;
+
+  min-width: 0;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  border: 1px solid #e2e8f0;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.new-product-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.10);
+
+  border-color: #6c96ff;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.new-product-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 220px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f8fafc;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+
+.new-image-placeholder {
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 10px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   LABEL MỚI
+===================================================== */
+
+.new-label {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 2;
+
+  padding: 6px 13px;
+
+  background: #4f35b8;
+
+  color: #ffffff;
+
+  border-radius: 0 8px 8px 0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   TRẢ GÓP
+===================================================== */
+
+.new-installment {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  padding: 6px 10px;
+
+  background: #e0edff;
+
+  color: #1683ff;
+
+  border-radius: 0 0 0 8px;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.new-product-content {
+  padding: 12px;
+}
+
+
+.new-brand {
+  margin-bottom: 5px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.new-product-content h3 {
+  height: 43px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  line-height: 1.4;
+
+  font-weight: 650;
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.new-rating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin: 8px 0;
+}
+
+
+.new-rating span {
+  color: #f5b800;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+}
+
+
+.new-rating small {
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.new-price {
+  color: #d71920;
+
+  font-size: 19px;
+
+  font-weight: 800;
+}
+
+
+.new-old-price {
+  margin-top: 3px;
+
+  color: #9ca3af;
+
+  font-size: 13px;
+
+  text-decoration: line-through;
+}
+
+
+/* =====================================================
+   KHUYẾN MÃI
+===================================================== */
+
+.new-promotion {
+  min-height: 32px;
+
+  margin-top: 9px;
+
+  padding: 7px 8px;
+
+  box-sizing: border-box;
+
+  background: #edf3ff;
+
+  border-radius: 5px;
+
+  color: #475569;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.new-product-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 10px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+.new-product-bottom button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #1683ff;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+
+.new-product-bottom button:hover {
+  background: #1683ff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .new-products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .new-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .new-products-tabs {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .new-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* =====================================================
+   PRODUCT SHOWCASE
+   DEAL SỐC - HOT TREND - HÀNG MỚI
+===================================================== */
+
+.product-showcase {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 30px auto 40px;
+
+  box-sizing: border-box;
+
+  background: #f3f7ff;
+
+  border: 3px solid #6c96ff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   3 TAB LỚN
+===================================================== */
+
+.showcase-tabs {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  height: 70px;
+
+  background: #ffffff;
+
+  border-bottom: 2px solid #6c96ff;
+}
+
+
+.showcase-tab {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+
+  border-right: 1px solid #e2e8f0;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.showcase-tab:last-child {
+  border-right: none;
+}
+
+
+.showcase-tab:hover {
+  background: #f5f9ff;
+}
+
+
+.showcase-tab span {
+  font-size: 25px;
+}
+
+
+/* TAB ĐANG CHỌN */
+
+.showcase-tab.active {
+  background: #f1f6ff;
+
+  color: #1683ff;
+}
+
+
+/* Đường viền dưới tab active */
+
+.showcase-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -2px;
+
+  height: 4px;
+
+  background: #1683ff;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.showcase-content {
+  padding: 22px 22px 18px;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.showcase-categories {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+}
+
+
+.category {
+  height: 40px;
+
+  padding: 0 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.category:hover {
+  border-color: #1683ff;
+
+  color: #1683ff;
+}
+
+
+.category.active {
+  border-color: #1683ff;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  box-shadow:
+    0 0 0 1px #1683ff;
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.showcase-products {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.showcase-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.showcase-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #6c96ff;
+
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.showcase-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 220px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f8fafc;
+}
+
+
+.showcase-placeholder {
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 10px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   DISCOUNT / NEW
+===================================================== */
+
+.showcase-label {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 2;
+
+  padding: 6px 13px;
+
+  background: #dc2626;
+
+  color: #ffffff;
+
+  border-radius: 0 8px 8px 0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.showcase-label.new {
+  background: #4f35b8;
+}
+
+
+/* =====================================================
+   TRẢ GÓP
+===================================================== */
+
+.showcase-installment {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  padding: 6px 10px;
+
+  background: #e0edff;
+
+  color: #1683ff;
+
+  border-radius: 0 0 0 8px;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.showcase-card-content {
+  padding: 12px;
+}
+
+
+.showcase-brand {
+  margin-bottom: 5px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.showcase-card h3 {
+  height: 43px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  line-height: 1.4;
+
+  font-weight: 650;
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.showcase-rating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin: 8px 0;
+}
+
+
+.showcase-rating span {
+  color: #f5b800;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+}
+
+
+.showcase-rating small {
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.showcase-price {
+  color: #d71920;
+
+  font-size: 19px;
+
+  font-weight: 800;
+}
+
+
+.showcase-old-price {
+  margin-top: 3px;
+
+  color: #9ca3af;
+
+  font-size: 13px;
+
+  text-decoration: line-through;
+}
+
+
+/* =====================================================
+   PROMOTION
+===================================================== */
+
+.showcase-promotion {
+  min-height: 32px;
+
+  margin-top: 9px;
+
+  padding: 7px 8px;
+
+  box-sizing: border-box;
+
+  background: #edf3ff;
+
+  border-radius: 5px;
+
+  color: #475569;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.showcase-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-top: 10px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+.showcase-bottom button {
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #1683ff;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+
+.showcase-bottom button:hover {
+  background: #1683ff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   XEM TẤT CẢ
+===================================================== */
+
+.showcase-more {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+
+.showcase-more button {
+  padding: 9px 25px;
+
+  border: 1px solid #1683ff;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.showcase-more button:hover {
+  background: #1683ff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .showcase-products {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .showcase-products {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .showcase-tab {
+    font-size: 16px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .showcase-tabs {
+    height: auto;
+
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-tab {
+    min-height: 55px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .showcase-categories {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+  }
+
+  .category {
+    flex-shrink: 0;
+  }
+
+  .showcase-products {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* =====================================================
+   HEADER - HD MOBILE
+===================================================== */
+
+.header {
+  width: 100%;
+  height: 72px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1683ff 0%,
+      #4f35b8 100%
+    );
+
+  color: white;
+
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.12);
+
+  position: relative;
+
+  z-index: 100;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER CONTAINER
+===================================================== */
+
+.header-container {
+
+  width: calc(100% - 80px);
+
+  max-width: 1200px;
+
+  height: 72px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  cursor: pointer;
+
+  font-size: 26px;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+}
+
+
+.logo-hd {
+
+  color: white;
+
+  font-size: 29px;
+
+  font-weight: 900;
+
+}
+
+
+.logo-mobile {
+
+  color: #dbeafe;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box {
+
+  flex: 1;
+
+  max-width: 590px;
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  background: white;
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.12);
+
+  transition: 0.2s;
+
+}
+
+
+.search-box:focus-within {
+
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.25),
+    0 4px 14px rgba(0,0,0,0.15);
+
+}
+
+
+.search-box input {
+
+  flex: 1;
+
+  height: 100%;
+
+  padding: 0 16px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #1f2937;
+
+  font-size: 13px;
+
+}
+
+
+.search-box input::placeholder {
+
+  color: #9ca3af;
+
+}
+
+
+.search-button {
+
+  width: 48px;
+
+  height: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: #1683ff;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: 0.2s;
+
+}
+
+
+.search-button:hover {
+
+  background: #eff6ff;
+
+}
+
+
+/* =====================================================
+   HEADER ACTIONS
+===================================================== */
+
+.header-actions {
+
+  margin-left: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+/* =====================================================
+   ACTION
+===================================================== */
+
+.header-action {
+
+  position: relative;
+
+  height: 48px;
+
+  padding: 5px 9px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+
+}
+
+
+.header-action:hover {
+
+  background:
+    rgba(255,255,255,0.14);
+
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.action-icon {
+
+  position: relative;
+
+  width: 30px;
+
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 21px;
+
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.action-text {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 2px;
+
+}
+
+
+.action-text small {
+
+  color: #dbeafe;
+
+  font-size: 9px;
+
+  line-height: 1;
+
+  font-weight: 400;
+
+}
+
+
+.action-text strong {
+
+  color: white;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+}
+
+
+/* =====================================================
+   CART BADGE
+===================================================== */
+
+.cart-badge {
+
+  position: absolute;
+
+  top: -5px;
+
+  right: -6px;
+
+  min-width: 15px;
+
+  height: 15px;
+
+  padding: 0 4px;
+
+  border-radius: 10px;
+
+  background: #ef4444;
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 2px solid #1683ff;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .header-container {
+
+    width: calc(100% - 40px);
+
+    gap: 18px;
+
+  }
+
+  .action-text {
+
+    display: none;
+
+  }
+
+  .header-action {
+
+    padding: 5px 8px;
+
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .header {
+
+    height: 64px;
+
+  }
+
+  .header-container {
+
+    height: 64px;
+
+    width: calc(100% - 20px);
+
+    gap: 12px;
+
+  }
+
+  .logo-mobile {
+
+    display: none;
+
+  }
+
+  .logo-hd {
+
+    font-size: 24px;
+
+  }
+
+  .search-box {
+
+    height: 38px;
+
+  }
+
+  .header-actions {
+
+    gap: 2px;
+
   }
 
 }

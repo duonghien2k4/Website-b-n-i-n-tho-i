@@ -1,0 +1,597 @@
+/* =====================================================
+   PRODUCT SHOWCASE
+   DEAL SỐC - HOT TREND - HÀNG MỚI VỀ
+===================================================== */
+
+.product-showcase {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 25px auto 35px;
+
+  background: #f4f7ff;
+
+  border: 2px solid #6c96ff;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TAB
+===================================================== */
+
+.showcase-tabs {
+  width: 100%;
+
+  height: 68px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  background: #ffffff;
+
+  border-bottom: 2px solid #6c96ff;
+}
+
+
+.showcase-tab {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0;
+
+  border: none;
+
+  border-right: 1px solid #dbe4f2;
+
+  background: #ffffff;
+
+  color: #6fa0e8;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.showcase-tab:last-child {
+  border-right: none;
+}
+
+
+.showcase-tab:hover {
+  background: #f4f8ff;
+
+  color: #1683ff;
+}
+
+
+.showcase-tab.active {
+  background: #f4f7ff;
+
+  color: #1683ff;
+}
+
+
+.showcase-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #1683ff,
+    #4f35b8
+  );
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.showcase-content {
+  width: 100%;
+
+  padding: 16px 18px 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.showcase-categories {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+
+.category {
+  height: 34px;
+
+  padding: 0 15px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.category:hover {
+  border-color: #1683ff;
+
+  color: #1683ff;
+}
+
+
+.category.active {
+  border-color: #1683ff;
+
+  background: #edf5ff;
+
+  color: #1683ff;
+
+  box-shadow: 0 0 0 1px #1683ff;
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.showcase-products {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.showcase-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e7f0;
+
+  border-radius: 13px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 7px rgba(15, 23, 42, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.showcase-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #6c96ff;
+
+  box-shadow:
+    0 8px 20px rgba(22, 131, 255, 0.13);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.showcase-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 175px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+
+.showcase-placeholder {
+  width: 110px;
+
+  height: 120px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 8px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.showcase-label {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  z-index: 2;
+
+  padding: 5px 10px;
+
+  background: #d71920;
+
+  color: #ffffff;
+
+  border-radius: 0 0 7px 0;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   INSTALLMENT
+===================================================== */
+
+.showcase-installment {
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  padding: 5px 8px;
+
+  background: #e5efff;
+
+  color: #4f75b8;
+
+  border-radius: 0 0 0 7px;
+
+  font-size: 10px;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.showcase-card-content {
+  padding: 10px;
+
+  box-sizing: border-box;
+}
+
+
+.showcase-brand {
+  margin-bottom: 3px;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+.showcase-card h3 {
+  height: 40px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #1f2937;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.showcase-rating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  margin: 6px 0;
+}
+
+
+.showcase-rating span {
+  color: #f5b800;
+
+  font-size: 11px;
+}
+
+
+.showcase-rating small {
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.showcase-price {
+  color: #d71920;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+
+.showcase-old-price {
+  margin-top: 2px;
+
+  color: #9ca3af;
+
+  font-size: 10px;
+
+  text-decoration: line-through;
+}
+
+
+/* =====================================================
+   PROMOTION
+===================================================== */
+
+.showcase-promotion {
+  min-height: 34px;
+
+  margin-top: 7px;
+
+  padding: 6px 7px;
+
+  background: #eef4ff;
+
+  border-radius: 5px;
+
+  color: #475569;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.showcase-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 5px;
+
+  margin-top: 8px;
+
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+
+.showcase-bottom button {
+  flex-shrink: 0;
+
+  width: 28px;
+
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #1683ff;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #1683ff;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.showcase-bottom button:hover {
+  background: #1683ff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1250px) {
+
+  .product-showcase {
+    width: calc(100% - 30px);
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+
+  .showcase-products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .showcase-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .showcase-tab {
+    font-size: 16px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .showcase-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .showcase-tabs {
+    height: 58px;
+  }
+
+  .showcase-tab {
+    font-size: 13px;
+  }
+
+  .showcase-content {
+    padding: 12px;
+  }
+
+}
+
+
+@media (max-width: 430px) {
+
+  .showcase-products {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-tabs {
+    height: auto;
+
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-tab {
+    min-height: 48px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .showcase-categories {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+  }
+
+  .category {
+    flex-shrink: 0;
+  }
+
+}
